@@ -4,7 +4,7 @@ Termin 1
 
 #### Vortragende
    
- **Christian Schaiter und Mathias Feitzinger **
+ **Christian Schaiter und Mathias Feitzingerasdfasdf **
 
 
 ## [Agenda]()
@@ -62,6 +62,12 @@ npm init
 * Alle Packete für aktuelles Projekt installieren
 ```npm update```
 
+### Semantic versioning (semver)
+![alt text](http://bytearcher.com/articles/semver-explained-why-theres-a-caret-in-my-package-json/promopics/1-table-semver-plain.png "Logo Title Text 1")
+![alt text](http://bytearcher.com/goodies/semantic-versioning-cheatsheet/wheelbarrel-with-tilde-caret-white-bg-w1000.jpg "Logo Title Text 1")
+
+:bug: Lock down dependency versions :bug:
+
 # [3. JavaScript Modules]() :bug:todo:bug:
 > Use Modules to organize your JavaScript Codes
 
@@ -76,4 +82,6 @@ LoadersFormats
 
 ### 1. Module Bundlers
 Bundlers
+
+# [4. Webpack or Gulp]() :bug:todo:bug:
 
