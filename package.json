@@ -1,0 +1,11 @@
+{
+    "name": "FrontendDevelopmentTrainingDocumentation",
+    "version": "1.0.0",
+    "description": "",
+    "main": "README.md",
+    "scripts": {
+      "start": " github-markdown-live -f ./README.md -a adbd3b33405367e15cbea8dbde79327815df2888"
+    },
+    "author": "mfe@world-direct.at and csc@world-direct.at",    
+    "license": "ISC"
+}
