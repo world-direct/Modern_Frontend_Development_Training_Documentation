@@ -4,7 +4,7 @@ Termin 1
 
 #### Vortragende
    
- **Christian Schaiter und Mathias Feitzingerasdfasdf **
+ **Christian Schaiter und Mathias Feitzinger**
 
 
 ## [Agenda]()
@@ -44,7 +44,7 @@ Lets play :stuck_out_tongue_closed_eyes: :video_game: :video_game: :video_game: 
 * Package Verwaltung
 * Erweitertes Dependencymanagement System
 * Versionssicherheit bei Package Versionssprüngen. 
-* Gesamte Serverumgebung mit Node möglich :mouse: ([Trello](https://trello.com/))
+* Gesamte Serverumgebung mit Node möglich :mouse: (bsp.: [Trello](https://trello.com/))
  
 ### :rocket: Demo :rocket: ```git checkout sample_01```
 <center> 
@@ -62,7 +62,7 @@ npm init
 * Alle Packete für aktuelles Projekt installieren
 ```npm update```
 
-### Semantic versioning (semver)
+### Semantic versioning (semver) <sup>[Image Sources](http://bytearcher.com/goodies/semantic-versioning-cheatsheet/)</sup>
 ![alt text](http://bytearcher.com/articles/semver-explained-why-theres-a-caret-in-my-package-json/promopics/1-table-semver-plain.png "Logo Title Text 1")
 ![alt text](http://bytearcher.com/goodies/semantic-versioning-cheatsheet/wheelbarrel-with-tilde-caret-white-bg-w1000.jpg "Logo Title Text 1")
 
