@@ -83,8 +83,10 @@ var randomLastname = require("random-lastname");
 ```
 **:boom:ERROR:boom: :scream::scream::scream:**
 * :exclamation: Browser versteht kein AMD oder CommonJS ohne Hilfe
-    * [browserify](http://browserify.org/) ```npm install -g browserify```
-        * [watchify](https://www.npmjs.com/package/watchify) fur Autoreload ```watchify main.js -o static/bundle.js```
+* npm-run installieren um executables direkt zu starten ```npm install -g npm-run```
+* [browserify](http://browserify.org/) ```npm install browserify --save-dev```
+* [watchify](https://www.npmjs.com/package/watchify) fur Autoreload ```watchify main.js -o static/bundle.js```
+
 Da wir nun ein NPM Package verwenden muessen wir die Html sowie das Javascript erweitern:
 
 **index.html**
@@ -135,18 +137,20 @@ window.forceMe = forceMe;
 
 # [3. JavaScript Modules]() :bug:todo:bug:
 > Use Modules to organize your JavaScript Codes
+Module: Calculator, Logger und DomWriter und eine Main 
+Zeichnung der Abhaengigkeiten
 
 ### 1. Generel
-Gesamt Bild
+Plain Javascript
 
-### 1. Module Formats
-Formats
+### 1. Module Formats and Loaders
+Bsp als AMD mit RequireJs
+Bsp als CommonJS mit SystemJS
 
-### 1. Module Loaders
-LoadersFormats
+### 1. ES15 bzw TypeScript
+Gleiches Beispiel mit Typescript nur mit tsc
 
 ### 1. Module Bundlers
-Bundlers
+browserify mit CommonJS
 
-# [4. Webpack or Gulp]() :bug:todo:bug:
-
+# [4. Webpack]() :bug:todo:bug:
