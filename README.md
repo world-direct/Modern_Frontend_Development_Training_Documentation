@@ -123,7 +123,7 @@ window.forceMe = forceMe;
 ##### Wichtige Befehle:
 * Packet installieren ```npm install <PACKAGE_NAME>```
 * Packet installieren und in package.json verweis ablegen ```npm install <PACKAGE_NAME> --save```
-* Packet für Entwicklungsumgebung installieren ```npm install <PACKAGE_NAME> --dev-save ```
+* Packet für Entwicklungsumgebung installieren ```npm install <PACKAGE_NAME> --save-dev ```
 * Packet "global" installieren 
 ```npm install <PACKAGE_NAME> --global```
 * Alle Packete für aktuelles Projekt installieren
@@ -321,7 +321,7 @@ Browser verstehen,  transpiled werden.
     * ```module``` keyword
     * ```export``` keyword
     * ```import``` keyword
- * TypeScript hinzufügen: ```npm install typescript --dev-save```
+ * TypeScript hinzufügen: ```npm install typescript --save-dev```
  * TypeScript zu JavaScript compilieren ```tsc main.ts -outDir build```
     * Resultat wird in _CommonJS_ ausgegeben
  * System.js für Module Loading ```npm install systemjs --save```
@@ -341,4 +341,63 @@ JavaScript Datei laden.
 * Webpack
 
 # [4. Webpack](https://webpack.github.io)
+> Bündelt **alle** Resourcen für ein Web Projekt zusammen. Von Javascript über CSS bishin zu Bildern,
+Fonts etc..
+
+## Basic Concepts
+### Entry
+```javascript
+module.exports = {
+    entry: './main'
+}
+ ```
+
+### Output
+```javascript
+module.exports = {
+    entry: './main',
+    output: {
+        path: 'build',
+        filename: 'bundle.js'
+    }
+}
+ ```
+### Loaders
+```javascript
+module.exports = {
+    entry: './main',
+    output: {
+        path: 'build',
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders: [
+            { test: /\.ts$/, loader: 'ts-loader' }
+        ]
+    }
+}
+ ```
+### Plugins
+```javascript
+module.exports = {
+    entry: './main',
+    output: {
+        path: 'build',
+        filename: 'bundle.js'
+    },   
+    module: {
+        loaders: [
+            { test: /\.ts$/, loader: 'ts-loader' }
+        ]
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin()
+    ]
+}
+ ```
+
+####  :rocket: Demo :rocket: ```git checkout Sample_06```
+
+```npm install webpack --save-dev```
+```npm install ts-loader --save-dev```
 
