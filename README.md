@@ -137,8 +137,8 @@ window.forceMe = forceMe;
 
 # [3. JavaScript Modules]() :bug:todo:bug:
 > Use Modules to organize your JavaScript Codes
-Module: Calculator, Logger und DomWriter und eine Main 
-Zeichnung der Abhaengigkeiten
+![Dependencies](assets/depencey_graph_for_demo.svg)
+
 
 ## 1. Generel 
 ### :rocket: Demo :rocket: ```git checkout Sample_02```
