@@ -140,17 +140,155 @@ window.forceMe = forceMe;
 Module: Calculator, Logger und DomWriter und eine Main 
 Zeichnung der Abhaengigkeiten
 
-### 1. Generel
-Plain Javascript
+## 1. Generel 
+### :rocket: Demo :rocket: ```git checkout Sample_02```
+Schreiben von Plain Old Javacsript Files:
+**calculator.js**
+```javascript
+var calculator = function () {
 
-### 1. Module Formats and Loaders
-Bsp als AMD mit RequireJs
-Bsp als CommonJS mit SystemJS
+    function add(summand1, summand2) {
+        logger.log("Add " + summand1 + "+" + summand2);
+        return summand1 + summand2;
+    }
 
-### 1. ES15 bzw TypeScript
+    function multiply(factor1, factor2) {
+        logger.log("Multiply " + factor1 + "*" + factor2);
+        
+        return factor1 * factor2;
+    }
+
+    function modulo(dividend, divisor) {
+        logger.log("Modulo " + dividend + "%" + divisor);
+        
+        return dividend % divisor;
+    }
+
+    return  {
+        add: add,
+        multiply: multiply,
+        modulo: modulo
+    }
+}();
+```
+
+**domWriter.js**
+```javascript
+var domWriter = function () {
+
+    function write(selector, input) {
+        logger.log("Write " + input + " to inner html of selector " + selector);
+        var nameSpan = document.getElementById(selector);
+        nameSpan.innerHTML = input;
+    }
+
+    return{
+        write: write
+    }
+}();
+
+```
+
+**logger.js**
+```javascript
+var logger = function () {
+
+    function logMessage(message) {
+        console.log(message);
+    }
+
+    return {
+        log: logMessage
+    }
+} ();
+```
+
+
+**main.js**
+```javascript
+var calculate = function () {
+    var addResult = calculator.add(100, 400);
+    domWriter.write('add-result', addResult);
+
+    var multiplicationResult = calculator.multiply(4, 8);
+    domWriter.write('multiplication-result', multiplicationResult);
+
+    var moduloResult = calculator.modulo(25, 4);
+    domWriter.write('modulo-result', moduloResult);
+};
+```
+
+Verwendung dieser im Html:
+**index.html**
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body class="container">
+    <div class="jumbotron">
+        <h1>Calculation Results</h1>
+        <ul>
+            <li>Addition 400 + 100 = <span id="add-result">???</span></li>
+            <li>Multiplication 4 * 8 = <span id="multiplication-result">???</span></li>
+            <li>Modulo 25 % 4 = <span id="modulo-result">???</span></li>
+        </ul>
+        <button onclick='calculate()' class="btn btn-primary">Calculate Result</button>
+    </div>
+    <script src="logger.js"></script>
+    <script src="calculator.js"></script>
+    <script src="domWriter.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
+```
+
+Fertiges Beispiel ist mit  ```git checkout Sample_02Completed``` erreichbar!
+
+#### Probleme
+* Alles im Global Scope :boom: :boom:. Somit Probleme mit anderen Modulen
+* Manuelle Dependency Resolution notwendig
+
+
+## 2. Module Formats and Loaders ```git checkout Sample_03```
+### AMD mit RequireJs
+> AMD ist das Format für Browseranwendungen!
+
+Module werden mit ```define()``` definiert. 
+#### AMD Syntax:
+```javascript
+define(['\logger'], function(logger){
+
+    var flyToTheMoon = function(){
+        logger.log('So Long, and Thanks for All the Fish');
+    }
+    return {
+        flyToTheMoon: flyToTheMoon
+    }
+}
+````
+####  :rocket: Demo :rocket: ```git checkout Sample_03```
+* Alle Module in AMD umschreiben
+* RequireJs installieren ```npm install requirejs --save```
+* index.html umschreiben
+
+- [x] Global Scope wird nicht mehr verwendet
+- [x] Dependencymanagement wird von RequiereJs übernommen!
+- [x] Keine Namenskonflikte möglich!
+
+
+Fertiges Beispiel ist mit  ```git checkout Sample_03Completed``` erreichbar!
+
+
+Bsp als CommonJS mit SystemJSy
+
+## 3. ES15 bzw TypeScript
 Gleiches Beispiel mit Typescript nur mit tsc
 
-### 1. Module Bundlers
+
+
+## 4. Module Bundlers
 browserify mit CommonJS
 
 # [4. Webpack]() :bug:todo:bug:
