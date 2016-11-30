@@ -307,12 +307,38 @@ Abhängigkeiten können mit ```require()``` angegeben werden.
 Fertiges Beispiel ist mit  ```git checkout Sample_04Completed``` erreichbar!
 
 
-## 3. ES15 bzw TypeScript
-Gleiches Beispiel mit Typescript nur mit tsc
+## 3. ES2015 bzw TypeScript
+ES2015 oder TypeScript haben ein umfangreiches Modulsystem. Jedoch versteht aktuell noch kein aktueller
+Browser ES2015 und Typescript muss immer in JavaScript komiliert werden. 
+Deshalb muss also der Code immer in eine ECMAScript-Version, die aktuelle
+Browser verstehen,  transpiled werden.
 
+    * [babel](https://babeljs.io/) ES15 Support für Browser
+    * [tsc](https://www.typescriptlang.org/) Compiler für TypeScript
 
+####  :rocket: Demo :rocket: ```git checkout Sample_05```
+* Umschreiben der Scripte von *.js zu *.ts
+    * ```module``` keyword
+    * ```export``` keyword
+    * ```import``` keyword
+ * TypeScript hinzufügen: ```npm install typescript --dev-save```
+ * TypeScript zu JavaScript compilieren ```tsc main.ts -outDir build```
+    * Resultat wird in _CommonJS_ ausgegeben
+ * System.js für Module Loading ```npm install systemjs --save```
+
+Fertiges Beispiel ist mit  ```git checkout Sample_05Completed``` erreichbar!
 
 ## 4. Module Bundlers
-browserify mit CommonJS
+Die bisherigen Lösungen hatten immer den Nachteil, dass sie der Browser für jedes Module
+eine eigene JavaSCript Datei laden musste. Das kann sehr schnell zu Problemen führen, da 
+Module ja eher klein gehalten werden und die Anzahl an vorhanden Modulen sehr schnell steigt.
 
-# [4. Webpack]() :bug:todo:bug:
+Aus diesem Grund werden Module Bundler verwendet. Diese Bundeln alle notwendigen JavaScript
+Dateien zu einem großen JavaSCript. Der Browser muss, im besten Fall, somit nur eine einzige
+JavaScript Datei laden. 
+
+* Browserify (siehe **sample_01**)
+* Webpack
+
+# [4. Webpack](https://webpack.github.io)
+
