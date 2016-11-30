@@ -256,7 +256,7 @@ Fertiges Beispiel ist mit  ```git checkout Sample_02Completed``` erreichbar!
 > AMD ist das Format für Browseranwendungen!
 
 Module werden mit ```define()``` definiert. 
-#### AMD Syntax:
+#### AMD Syntax
 ```javascript
 define(['\logger'], function(logger){
 
@@ -266,8 +266,8 @@ define(['\logger'], function(logger){
     return {
         flyToTheMoon: flyToTheMoon
     }
-}
-````
+});
+```
 ####  :rocket: Demo :rocket: ```git checkout Sample_03```
 * Alle Module in AMD umschreiben
 * RequireJs installieren ```npm install requirejs --save```
@@ -281,7 +281,31 @@ define(['\logger'], function(logger){
 Fertiges Beispiel ist mit  ```git checkout Sample_03Completed``` erreichbar!
 
 
-Bsp als CommonJS mit SystemJSy
+### CommonJS mit SystemJS
+> CommonJS ist das Module System für node.js Anwendungen.
+
+Öffentliche Methoden werden, innerhalb eines Modules, mit einer Zuweisung 
+zu ```export``` oder ```module.export``` bekannt gegeben. 
+Abhängigkeiten können mit ```require()``` angegeben werden.
+#### CommonJS Syntax:
+```javascript
+    var logger = requiere('logger.js');
+
+    var flyToTheMoon = function(){
+        logger.log('So Long, and Thanks for All the Fish');
+    }
+    exports.flyToTheMoon = flyToTheMoon
+    }
+});
+```
+
+####  :rocket: Demo :rocket: ```git checkout Sample_04```
+* Alle Module in CommonJS umschreiben
+* SystemJS installieren ```npm install Systemjs --save```
+* index.html umschreiben
+
+Fertiges Beispiel ist mit  ```git checkout Sample_04Completed``` erreichbar!
+
 
 ## 3. ES15 bzw TypeScript
 Gleiches Beispiel mit Typescript nur mit tsc
