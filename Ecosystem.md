@@ -151,12 +151,11 @@ Mit diesen Änderungen funktioniert der Code wieder und wir haben unser erstes P
 Unser Beispiel:
 ![Dependencies](assets/dependency_graph_for_demo.png)
 
-## Module Formats vs Module Loaders vs Module Bundlers 
 
 ## 1. Generel 
 
 ### :rocket: Demo :rocket: `git checkout Sample_02`
-Schreiben von Plain Old Javacsript Files:
+Schreiben von Vanilla Javacsript Files:
 
 **calculator.js**
 ```javascript
@@ -266,7 +265,43 @@ Fertiges Beispiel ist mit  ```git checkout Sample_02Completed``` erreichbar!
 * Manuelle Dependency Resolution notwendig
 
 
-## 2. Module Formats and Loaders ```git checkout Sample_03```
+## Module Formats vs Module Loaders vs Module Bundlers 
+
+> Modulares JavaScript leicht(er) und wartbarer gemacht.
+
+### Module Formats
+
+Es existieren verschiedene Modul-Formate für JavaScript:
+* AMD (Asynchronous Module Definition): Ein sehr bekanntes und weit verbreitetes Modul-Format.
+* CommonJS (das Standardformat in der serverseitgen Node.js Entwicklung)
+* UMD (Universal Module Definition): Untersützt sowohl AMD als auch CommonJS, ist allerdings nicht weit verbreitet.
+* System.register: Ein Format für den SystemJS Module Loader.
+* ES2015 (ECMAScript 2015): Der eingebaute Standard in der aktuellen JavaScript Version.  
+
+### Module Loaders
+
+Nachdem der JavaScript in einem bestimmten Format geschrieben wurde, braucht es eine spezielles Framework, um das Format zu "verstehen". Diese Frameworks werden Module Loaders genannt.
+
+Folgende populäre Module Loaders finden sich in größeren JavaScript Projekten:
+
+* [Require.js](http://requirejs.org/): Unterstützt das AMD Format.
+* [SystemJS](https://github.com/systemjs/systemjs): Unterstützt sowohl AMD, CommonJs, ES2015 und System.register. 
+
+Die Abhängigkeiten werden zur Laufzeit aufgelöst und nachgeladen, was Vorteile (schnellerer Applikationsstart) aber auch Nachteile (viele Folgerequests) mit sich bringt.
+
+### Module Bundlers
+
+Die Auflösung der Abhängigkeiten kann nicht nur zur Laufzeit, sondern auch bereits zur Kompilierzeit erfolgen. Diese Strategie verfolgen Module Bundlers (die Module werden in eine oder wenige Dateien gebündelt).
+
+Folgende populäre Module Bundlers finden sich in größeren JavaScript Projekten:
+
+* [Browserify](http://browserify.org/): Wird dafür verwendet, um das (speziell serverseitig verwendete) CommonJS Format für den Browser zu bundeln (deshalb der Name).
+* [WebPack](https://webpack.github.io/): Ein sehr universieller Module Bundler, der verschiedene Formate versteht und sogar andere Medien (wie css, Bilder, etc) bündeln kann.
+
+Hier werden wir im Speziellen vorwiegend auf WebPack eingehen.
+
+## Module Formats and Loaders ```git checkout Sample_03```
+
 ### AMD mit RequireJs
 > AMD ist das Format für Browseranwendungen!
 
@@ -293,15 +328,15 @@ define(['\logger'], function(logger){
 - [x] Keine Namenskonflikte möglich!
 
 
-Fertiges Beispiel ist mit  ```git checkout Sample_03Completed``` erreichbar!
+Fertiges Beispiel ist mit  `git checkout Sample_03Completed` erreichbar!
 
 
 ### CommonJS mit SystemJS
 > CommonJS ist das Module System für node.js Anwendungen.
 
 Öffentliche Methoden werden, innerhalb eines Modules, mit einer Zuweisung 
-zu ```export``` oder ```module.export``` bekannt gegeben. 
-Abhängigkeiten können mit ```require()``` angegeben werden.
+zu `export` oder `module.export` bekannt gegeben. 
+Abhängigkeiten können mit `require()` angegeben werden.
 #### CommonJS Syntax:
 ```javascript
     var logger = requiere('logger.js');
@@ -314,12 +349,12 @@ Abhängigkeiten können mit ```require()``` angegeben werden.
 });
 ```
 
-####  :rocket: Demo :rocket: ```git checkout Sample_04```
+####  :rocket: Demo :rocket: `git checkout Sample_04`
 * Alle Module in CommonJS umschreiben
-* SystemJS installieren ```npm install Systemjs --save```
+* SystemJS installieren `npm install Systemjs --save`
 * index.html umschreiben
 
-Fertiges Beispiel ist mit  ```git checkout Sample_04Completed``` erreichbar!
+Fertiges Beispiel ist mit  `git checkout Sample_04Completed` erreichbar!
 
 
 ## 3. ES2015 bzw TypeScript
@@ -331,15 +366,15 @@ Browser verstehen,  transpiled werden.
     * [babel](https://babeljs.io/) ES15 Support für Browser
     * [tsc](https://www.typescriptlang.org/) Compiler für TypeScript
 
-####  :rocket: Demo :rocket: ```git checkout Sample_05```
+####  :rocket: Demo :rocket: `git checkout Sample_05`
 * Umschreiben der Scripte von *.js zu *.ts
-    * ```module``` keyword
-    * ```export``` keyword
-    * ```import``` keyword
- * TypeScript hinzufügen: ```npm install typescript --save-dev```
- * TypeScript zu JavaScript compilieren ```tsc main.ts -outDir build```
+    * `module` keyword
+    * `export` keyword
+    * `import` keyword
+ * TypeScript hinzufügen: `npm install typescript --save-dev`
+ * TypeScript zu JavaScript compilieren `tsc main.ts -outDir build`
     * Resultat wird in _CommonJS_ ausgegeben
- * System.js für Module Loading ```npm install systemjs --save```
+ * System.js für Module Loading `npm install systemjs --save`
 
 Fertiges Beispiel ist mit  `git checkout Sample_05Completed` erreichbar!
 
@@ -359,15 +394,22 @@ JavaScript Datei laden.
 > Bündelt **alle** Resourcen für ein Web Projekt zusammen. Von Javascript über CSS bishin zu Bildern,
 Fonts etc..
 
+
 ## Basic Concepts
+
+WebPack erstellt sich ausgehend von einem Einsprungpunkt einen Dependency-Graph und wendet für jede gefundene Datei bestimmte Transformationen (definiert durch sogenannte Loader) an. 
+
 ### Entry
+In der `entry` Eigenschaft kann man angeben, wo der Startpunkt für das Bundeling erfolgen soll.
+
 ```javascript
 module.exports = {
     entry: './main'
 }
  ```
-
 ### Output
+Die `output` Eigenschaft definiert die Zieldatei, in welcher der gesamte gebündelte Code als Ergebnis zu finden ist.
+
 ```javascript
 module.exports = {
     entry: './main',
@@ -377,7 +419,10 @@ module.exports = {
     }
 }
  ```
+
 ### Loaders
+Wenn WebPack durch den Dependency-Graph iteriert, wird jede Datei (jeder Knoten) mit den angegebenen (in der gleichen Reihenfolge) Loadern transformiert. So kann z.B. aus einem TypeScript-File eine JavaScript Datei erzeugt werden, bevor sie gebundelt wird. 
+
 ```javascript
 module.exports = {
     entry: './main',
@@ -393,6 +438,8 @@ module.exports = {
 }
  ```
 ### Plugins
+Die Transformationen durch Loaders erfolgen nur auf einzelne Files (im Dependency-Graph). Soll jedoch das Resultat transformiert werden (z.B. Minifying), kommen Plugins zum Einsatz. WebPack bietet hierfür eine Vielzahl an verschiedenen Plugins. 
+
 ```javascript
 module.exports = {
     entry: './main',
@@ -411,7 +458,8 @@ module.exports = {
 }
  ```
 
-####  :rocket: Demo :rocket: ```git checkout Sample_06```
+####  :rocket: Demo :rocket: `git checkout Sample_06`
 
-`npm install webpack --save-dev`
-`npm install ts-loader --save-dev`
+* WebPack installieren: `npm install webpack --save-dev`:
+* TypeScript-Loader installieren: `npm install ts-loader --save-dev`
+* WebPack ausführen: `npm-run WebPack`
