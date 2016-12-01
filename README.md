@@ -31,7 +31,7 @@ Termin 1
 * [Node.js](https://nodejs.org/en/) ist eine serverseitige Plattform für die Entwicklung von serverseitigen Programmen direkt in Javascript. 
 * Läuft als Dienst am Computer (Mac, Windows, Linux etc..) ([Download](https://nodejs.org/en/download/) für Windows).
 * Ermöglicht die Entwicklung der gesamten Serverumgebung (Bsp.: [Trello](https://trello.com/)).
-* Enthält mit [npm](https://www.npmjs.com/) (Node Packet Manager) einen eigenen Pakete-Manager.
+* Enthält mit [NPM](https://www.npmjs.com/) (Node Packet Manager) einen eigenen Pakete-Manager.
 
 ### :rocket: Demo :rocket:  
 ```bash
@@ -42,6 +42,7 @@ Lets play :stuck_out_tongue_closed_eyes: :video_game: :video_game: :video_game: 
 
 
 # [2. Node Package Manager](https://www.npmjs.com/)
+
 > Für C# Entwickler: NPM ~ NuGet for Javacript  
 
 * Integrierte Paket-Verwaltung von Node.js (wird bei der Installation von Node.js mitinstalliert)
@@ -92,7 +93,7 @@ var randomLastname = require("random-lastname");
 * Der Browser versteht die obige `require` Funktion nicht.
 * Es wird also eine Bibliothek benötigt, die diese Funktionalität liefert (Module Loader) oder es muss die Funktionalität bereits beim Kompilieren mitgeliefert werden (Module Bundler).
 * Wir verwenden einen einfachen Module Bundler: Browserify
-* [npm-run](https://www.npmjs.com/package/npm-run): Startet npm Executables direkt, ohne lästiges Referenzieren in den node_modules Ordner: `npm install -g npm-run`
+* [npm-run](https://www.npmjs.com/package/npm-run): Startet NPM Executables direkt, ohne lästiges Referenzieren in den node_modules Ordner: `npm install -g npm-run`
 * [browserify](http://browserify.org/): Stattet obigen Code mit der notwendigen Funktionalität aus: `npm install browserify --save-dev`
 * [watchify](https://www.npmjs.com/package/watchify): Automatische Kompilierung mit Browserify nach jeder Änderungen: `npm install watchify -g` bzw. zum Starten `watchify main.js -o static/bundle.js`
 
@@ -132,7 +133,7 @@ window.forceMe = forceMe;
 Mit diesen Änderungen funktioniert der Code wieder und wir haben unser erstes Paket eingebunden.
 
 
-## Wichtige npm Befehle:
+## Wichtige NPM Befehle:
 
 * Neues Paket installieren: `npm install <PACKAGE_NAME>`
 * Neues Paket installieren und einen Verweis in `package.json` ablegen: `npm install <PACKAGE_NAME> --save`
@@ -147,19 +148,26 @@ Mit diesen Änderungen funktioniert der Code wieder und wir haben unser erstes P
 ![alt text](http://bytearcher.com/articles/semver-explained-why-theres-a-caret-in-my-package-json/promopics/1-table-semver-plain.png "Logo Title Text 1")
 ![alt text](http://bytearcher.com/goodies/semantic-versioning-cheatsheet/wheelbarrel-with-tilde-caret-white-bg-w1000.jpg "Logo Title Text 1")
 
-:bug: Lock down dependency versions :bug:
+### Pitfalls bei der Versionierung  
+
+* Man installiert auf dem Entwicklerrechner mit NPM die aktuelle Version und arbeitet dann ohne Update einige Zeit damit.
+* Wenn dann bei der Produktivsetzung am Build-Server der Frontend-Build ausgeführt wird, kann man eine andere (neuere) Version bekommen.
+* Sollte diese Version Breaking-Changes oder einen Bug haben, fällt dies erst in der Produktion auf (getestet wurde mit der lokal installierten Version) 
 
 
 
 # [3. JavaScript Modules]() :bug:todo:bug:
 
 > Use Modules to organize your JavaScript Codes
-![Dependencies](assets/depencey_graph_for_demo.svg)
 
+![Dependencies](assets/dependency_graph_for_demo.png)
+
+
+## Module Formats vs Module Loaders vs Module Bundlers 
 
 ## 1. Generel 
 
-### :rocket: Demo :rocket: ```git checkout Sample_02```
+### :rocket: Demo :rocket: `git checkout Sample_02`
 Schreiben von Plain Old Javacsript Files:
 
 **calculator.js**
@@ -287,9 +295,9 @@ define(['\logger'], function(logger){
     }
 });
 ```
-####  :rocket: Demo :rocket: ```git checkout Sample_03```
+####  :rocket: Demo :rocket: `git checkout Sample_03`
 * Alle Module in AMD umschreiben
-* RequireJs installieren ```npm install requirejs --save```
+* RequireJs installieren `npm install requirejs --save`
 * index.html umschreiben
 
 - [x] Global Scope wird nicht mehr verwendet
@@ -345,7 +353,7 @@ Browser verstehen,  transpiled werden.
     * Resultat wird in _CommonJS_ ausgegeben
  * System.js für Module Loading ```npm install systemjs --save```
 
-Fertiges Beispiel ist mit  ```git checkout Sample_05Completed``` erreichbar!
+Fertiges Beispiel ist mit  `git checkout Sample_05Completed` erreichbar!
 
 ## 4. Module Bundlers
 Die bisherigen Lösungen hatten immer den Nachteil, dass sie der Browser für jedes Module
@@ -417,6 +425,5 @@ module.exports = {
 
 ####  :rocket: Demo :rocket: ```git checkout Sample_06```
 
-```npm install webpack --save-dev```
-```npm install ts-loader --save-dev```
-
+`npm install webpack --save-dev`
+`npm install ts-loader --save-dev`
