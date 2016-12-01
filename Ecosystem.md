@@ -328,15 +328,15 @@ define(['\logger'], function(logger){
 - [x] Keine Namenskonflikte möglich!
 
 
-Fertiges Beispiel ist mit  ```git checkout Sample_03Completed``` erreichbar!
+Fertiges Beispiel ist mit  `git checkout Sample_03Completed` erreichbar!
 
 
 ### CommonJS mit SystemJS
 > CommonJS ist das Module System für node.js Anwendungen.
 
 Öffentliche Methoden werden, innerhalb eines Modules, mit einer Zuweisung 
-zu ```export``` oder ```module.export``` bekannt gegeben. 
-Abhängigkeiten können mit ```require()``` angegeben werden.
+zu `export` oder `module.export` bekannt gegeben. 
+Abhängigkeiten können mit `require()` angegeben werden.
 #### CommonJS Syntax:
 ```javascript
     var logger = requiere('logger.js');
@@ -349,12 +349,12 @@ Abhängigkeiten können mit ```require()``` angegeben werden.
 });
 ```
 
-####  :rocket: Demo :rocket: ```git checkout Sample_04```
+####  :rocket: Demo :rocket: `git checkout Sample_04`
 * Alle Module in CommonJS umschreiben
-* SystemJS installieren ```npm install Systemjs --save```
+* SystemJS installieren `npm install Systemjs --save`
 * index.html umschreiben
 
-Fertiges Beispiel ist mit  ```git checkout Sample_04Completed``` erreichbar!
+Fertiges Beispiel ist mit  `git checkout Sample_04Completed` erreichbar!
 
 
 ## 3. ES2015 bzw TypeScript
@@ -366,15 +366,15 @@ Browser verstehen,  transpiled werden.
     * [babel](https://babeljs.io/) ES15 Support für Browser
     * [tsc](https://www.typescriptlang.org/) Compiler für TypeScript
 
-####  :rocket: Demo :rocket: ```git checkout Sample_05```
+####  :rocket: Demo :rocket: `git checkout Sample_05`
 * Umschreiben der Scripte von *.js zu *.ts
-    * ```module``` keyword
-    * ```export``` keyword
-    * ```import``` keyword
- * TypeScript hinzufügen: ```npm install typescript --save-dev```
- * TypeScript zu JavaScript compilieren ```tsc main.ts -outDir build```
+    * `module` keyword
+    * `export` keyword
+    * `import` keyword
+ * TypeScript hinzufügen: `npm install typescript --save-dev`
+ * TypeScript zu JavaScript compilieren `tsc main.ts -outDir build`
     * Resultat wird in _CommonJS_ ausgegeben
- * System.js für Module Loading ```npm install systemjs --save```
+ * System.js für Module Loading `npm install systemjs --save`
 
 Fertiges Beispiel ist mit  `git checkout Sample_05Completed` erreichbar!
 
@@ -394,15 +394,22 @@ JavaScript Datei laden.
 > Bündelt **alle** Resourcen für ein Web Projekt zusammen. Von Javascript über CSS bishin zu Bildern,
 Fonts etc..
 
+
 ## Basic Concepts
+
+WebPack erstellt sich ausgehend von einem Einsprungpunkt einen Dependency-Graph und wendet für jede gefundene Datei bestimmte Transformationen (definiert durch sogenannte Loader) an. 
+
 ### Entry
+In der `entry` Eigenschaft kann man angeben, wo der Startpunkt für das Bundeling erfolgen soll.
+
 ```javascript
 module.exports = {
     entry: './main'
 }
  ```
-
 ### Output
+Die `output` Eigenschaft definiert die Zieldatei, in welcher der gesamte gebündelte Code als Ergebnis zu finden ist.
+
 ```javascript
 module.exports = {
     entry: './main',
@@ -412,7 +419,10 @@ module.exports = {
     }
 }
  ```
+
 ### Loaders
+Wenn WebPack durch den Dependency-Graph iteriert, wird jede Datei (jeder Knoten) mit den angegebenen (in der gleichen Reihenfolge) Loadern transformiert. So kann z.B. aus einem TypeScript-File eine JavaScript Datei erzeugt werden, bevor sie gebundelt wird. 
+
 ```javascript
 module.exports = {
     entry: './main',
@@ -428,6 +438,8 @@ module.exports = {
 }
  ```
 ### Plugins
+Die Transformationen durch Loaders erfolgen nur auf einzelne Files (im Dependency-Graph). Soll jedoch das Resultat transformiert werden (z.B. Minifying), kommen Plugins zum Einsatz. WebPack bietet hierfür eine Vielzahl an verschiedenen Plugins. 
+
 ```javascript
 module.exports = {
     entry: './main',
@@ -446,7 +458,8 @@ module.exports = {
 }
  ```
 
-####  :rocket: Demo :rocket: ```git checkout Sample_06```
+####  :rocket: Demo :rocket: `git checkout Sample_06`
 
-`npm install webpack --save-dev`
-`npm install ts-loader --save-dev`
+* WebPack installieren: `npm install webpack --save-dev`:
+* TypeScript-Loader installieren: `npm install ts-loader --save-dev`
+* WebPack ausführen: `npm-run WebPack`
