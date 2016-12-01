@@ -1,10 +1,12 @@
-Termin 1
+Ökosystem für die moderne Frontend-Entwicklung
 ===
-> Ökosystem für die moderne Frontend-Entwicklung auf Basis von Web-Technologien
+> Dieser Vortrag soll zeigen wie ein modernes Ökosystem für Frontend Anwendungen aussehen kann.
+Node.js ist aus dem altag eines Frontend Entwicklers nicht wegzudenken. AMD und CommonJS kommen immer häufiger vor und
+wie versteht eigentlich ein nicht ganz so moderner Broweser die neusten Sprachfeatueres von JavaScript?
 
 #### Vortragende
    
- **Christian Schaiter und Mathias Feitzinger**
+ **[Christian Schaiter](<user@example.com>) und [Mathias Feitzinger](<mfe@world-direct.at>)**
 
 
 ## Agenda
