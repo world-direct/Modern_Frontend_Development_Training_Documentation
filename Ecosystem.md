@@ -151,12 +151,11 @@ Mit diesen Änderungen funktioniert der Code wieder und wir haben unser erstes P
 Unser Beispiel:
 ![Dependencies](assets/dependency_graph_for_demo.png)
 
-## Module Formats vs Module Loaders vs Module Bundlers 
 
 ## 1. Generel 
 
 ### :rocket: Demo :rocket: `git checkout Sample_02`
-Schreiben von Plain Old Javacsript Files:
+Schreiben von Vanilla Javacsript Files:
 
 **calculator.js**
 ```javascript
@@ -265,8 +264,11 @@ Fertiges Beispiel ist mit  ```git checkout Sample_02Completed``` erreichbar!
 * Alles im Global Scope :boom: :boom:. Somit Probleme mit anderen Modulen
 * Manuelle Dependency Resolution notwendig
 
+## Module Formats vs Module Loaders vs Module Bundlers 
+todo csc 
 
-## 2. Module Formats and Loaders ```git checkout Sample_03```
+
+## Module Formats and Loaders ```git checkout Sample_03```
 ### AMD mit RequireJs
 > AMD ist das Format für Browseranwendungen!
 
