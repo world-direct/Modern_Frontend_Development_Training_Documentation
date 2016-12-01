@@ -41,7 +41,7 @@ Lets play :stuck_out_tongue_closed_eyes: :video_game: :video_game: :video_game: 
 * Erweitertes Dependency-Management System (alle Abhängigkeiten werden mitgeladen)
 * Versionssicherheit durch [Semantic Versioning](http://semver.org/) (semver) 
  
-### :rocket: Demo :rocket: `git checkout sample_01`
+### :rocket: Demo :rocket: `git checkout Sample_01`
 
 * Neue Konfigurationsdatei für NPM (package.json) anlegen: `npm init`
 * [Live-Server](https://www.npmjs.com/package/live-server): Einfacher HTTP-Server für die Entwicklung: `npm install -g live-server` bzw. zum Starten: `live-server`
