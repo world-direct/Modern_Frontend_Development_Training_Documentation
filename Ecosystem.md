@@ -264,11 +264,44 @@ Fertiges Beispiel ist mit  ```git checkout Sample_02Completed``` erreichbar!
 * Alles im Global Scope :boom: :boom:. Somit Probleme mit anderen Modulen
 * Manuelle Dependency Resolution notwendig
 
-## Module Formats vs Module Loaders vs Module Bundlers 
-todo csc 
 
+## Module Formats vs Module Loaders vs Module Bundlers 
+
+> Modulares JavaScript leicht(er) und wartbarer gemacht.
+
+### Module Formats
+
+Es existieren verschiedene Modul-Formate für JavaScript:
+* AMD (Asynchronous Module Definition): Ein sehr bekanntes und weit verbreitetes Modul-Format.
+* CommonJS (das Standardformat in der serverseitgen Node.js Entwicklung)
+* UMD (Universal Module Definition): Untersützt sowohl AMD als auch CommonJS, ist allerdings nicht weit verbreitet.
+* System.register: Ein Format für den SystemJS Module Loader.
+* ES2015 (ECMAScript 2015): Der eingebaute Standard in der aktuellen JavaScript Version.  
+
+### Module Loaders
+
+Nachdem der JavaScript in einem bestimmten Format geschrieben wurde, braucht es eine spezielles Framework, um das Format zu "verstehen". Diese Frameworks werden Module Loaders genannt.
+
+Folgende populäre Module Loaders finden sich in größeren JavaScript Projekten:
+
+* [Require.js](http://requirejs.org/): Unterstützt das AMD Format.
+* [SystemJS](https://github.com/systemjs/systemjs): Unterstützt sowohl AMD, CommonJs, ES2015 und System.register. 
+
+Die Abhängigkeiten werden zur Laufzeit aufgelöst und nachgeladen, was Vorteile (schnellerer Applikationsstart) aber auch Nachteile (viele Folgerequests) mit sich bringt.
+
+### Module Bundlers
+
+Die Auflösung der Abhängigkeiten kann nicht nur zur Laufzeit, sondern auch bereits zur Kompilierzeit erfolgen. Diese Strategie verfolgen Module Bundlers (die Module werden in eine oder wenige Dateien gebündelt).
+
+Folgende populäre Module Bundlers finden sich in größeren JavaScript Projekten:
+
+* [Browserify](http://browserify.org/): Wird dafür verwendet, um das (speziell serverseitig verwendete) CommonJS Format für den Browser zu bundeln (deshalb der Name).
+* [WebPack](https://webpack.github.io/): Ein sehr universieller Module Bundler, der verschiedene Formate versteht und sogar andere Medien (wie css, Bilder, etc) bündeln kann.
+
+Hier werden wir im Speziellen vorwiegend auf WebPack eingehen.
 
 ## Module Formats and Loaders ```git checkout Sample_03```
+
 ### AMD mit RequireJs
 > AMD ist das Format für Browseranwendungen!
 
