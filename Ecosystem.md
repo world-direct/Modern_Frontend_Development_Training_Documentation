@@ -4,26 +4,16 @@
 Node.js ist aus dem altag eines Frontend Entwicklers nicht wegzudenken. AMD und CommonJS kommen immer häufiger vor und
 wie versteht eigentlich ein nicht ganz so moderner Broweser die neusten Sprachfeatueres von JavaScript?
 
-#### Vortragende
+## Vortragende
    
- **[Christian Schaiter](<user@example.com>) und [Mathias Feitzinger](<mfe@world-direct.at>)**
+ **[Christian Schaiter](mailto:user@example.com) und [Mathias Feitzinger](mailto:mfe@world-direct.at)**
 
 
 ## Agenda
-* Node Package Manager (npm): Das Package Management System für node.js
-    * Wie werden alle weiteren notwendigen Tools/Frameworks/Bibliotheken geladen und eingebunden
-* Module Loaders und Module Bundlers
-    * Unterschiede zwischen AMD und CommonJS
-    * SystemJS vs. Webpack: State-of-the-Art Module-Loaders / Module Bundlers
-* TaskRunner:  
-    * Automatisierte Frontend-Builds (ähnlich zu Ant in Java) am Beispiel von Gulp
-    * Integration in TFS-Builds 
-* Entwicklung mit Typescript
-    * Best Practices von TypeScript  für Angular 2 (Annotationen, Klassen, Interfaces, Imports, Module, etc.)
-    * Verwenden von JS-Fremdbibliotheken mit Hilfe von Declaration-Files
-    * Visual Studio Code
-    * Kurzeinführung in den neuen Code-Editor von MS
-
+1. Node.js
+1. Node Package Manager
+1. JavaScript Module System and Bundlers
+1. WebPack Einführung
 
 
 # [1. Node.js](https://nodejs.org/en/)
@@ -157,13 +147,9 @@ Mit diesen Änderungen funktioniert der Code wieder und wir haben unser erstes P
 * Sollte diese Version Breaking-Changes oder einen Bug haben, fällt dies erst in der Produktion auf (getestet wurde mit der lokal installierten Version) 
 
 
-
-# [3. JavaScript Modules]() :bug:todo:bug:
-
-> Use Modules to organize your JavaScript Codes
-
+# [3. JavaScript Modules]() 
+Unser Beispiel:
 ![Dependencies](assets/dependency_graph_for_demo.png)
-
 
 ## Module Formats vs Module Loaders vs Module Bundlers 
 
