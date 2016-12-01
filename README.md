@@ -7,12 +7,12 @@ Termin 1
  **Christian Schaiter und Mathias Feitzinger**
 
 
-## [Agenda]()
+## Agenda
 * Node Package Manager (npm): Das Package Management System für node.js
     * Wie werden alle weiteren notwendigen Tools/Frameworks/Bibliotheken geladen und eingebunden
 * Module Loaders und Module Bundlers
     * Unterschiede zwischen AMD und CommonJS
-    * SystemJS vs. Webpack: State-of-the-Art Module-Loaders 
+    * SystemJS vs. Webpack: State-of-the-Art Module-Loaders / Module Bundlers
 * TaskRunner:  
     * Automatisierte Frontend-Builds (ähnlich zu Ant in Java) am Beispiel von Gulp
     * Integration in TFS-Builds 
@@ -22,12 +22,16 @@ Termin 1
     * Visual Studio Code
     * Kurzeinführung in den neuen Code-Editor von MS
 
+
+
 # [1. Node.js](https://nodejs.org/en/)
+
 > Javascript für Server
 
-
-* Javascript direkt am Rechner ausführen. 
-* [Node.js](https://nodejs.org/en/) läuft als Dienst am Computer (Mac, Windows, Linux etc..)
+* [Node.js](https://nodejs.org/en/) ist eine serverseitige Plattform für die Entwicklung von serverseitigen Programmen direkt in Javascript. 
+* Läuft als Dienst am Computer (Mac, Windows, Linux etc..) ([Download](https://nodejs.org/en/download/) für Windows).
+* Ermöglicht die Entwicklung der gesamten Serverumgebung (Bsp.: [Trello](https://trello.com/)).
+* Enthält mit [npm](https://www.npmjs.com/) (Node Packet Manager) einen eigenen Pakete-Manager.
 
 ### :rocket: Demo :rocket:  
 ```bash
@@ -36,29 +40,29 @@ npm install -g hangman-game
 Lets play :stuck_out_tongue_closed_eyes: :video_game: :video_game: :video_game: :video_game: :video_game: :video_game: :video_game: :video_game: 
 
 
+
 # [2. Node Package Manager](https://www.npmjs.com/)
- > Für C# Entwickler: NPM ~ NuGet for Javacript  
+> Für C# Entwickler: NPM ~ NuGet for Javacript  
 
-* Package Verwaltung
-* Erweitertes Dependencymanagement System
-* Versionssicherheit bei Package Versionssprüngen. 
-* Gesamte Serverumgebung mit Node möglich :mouse: (bsp.: [Trello](https://trello.com/))
+* Integrierte Paket-Verwaltung von Node.js (wird bei der Installation von Node.js mitinstalliert)
+* Erweitertes Dependency-Management System (alle Abhängigkeiten werden mitgeladen)
+* Versionssicherheit durch [Semantic Versioning](http://semver.org/) (semver) 
  
-### :rocket: Demo :rocket: ```git checkout sample_01```
+### :rocket: Demo :rocket: `git checkout sample_01`
 
-* NPM Packet anlegen: ```npm init```
-* Development Http Server mit LiveReload: ```npm install -g live-server``` and execute ```live-server```
+* Neue Konfigurationsdatei für NPM (package.json) anlegen: `npm init`
+* [Live-Server](https://www.npmjs.com/package/live-server): Einfacher HTTP-Server für die Entwicklung: `npm install -g live-server` bzw. zum Starten: `live-server`
 
 **index.html**
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    </head>
+    <head></head>
     <body>
-    <h1>May the force is with you</h1>
-    <span>Your are </span><span id='name'>???</span>
-    <script src="./main.js" type="text/javascript"></script>
+        <h1>May the force be with you!</h1>
+        <span>You are </span>
+        <span id='name'>???</span>
+        <script src="./main.js" type="text/javascript"></script>
     </body>
 </html>
 ```
@@ -68,38 +72,43 @@ Lets play :stuck_out_tongue_closed_eyes: :video_game: :video_game: :video_game: 
 'use strict';
 
 function forceMe(){
-var nameSpan = document.getElementById('name');
-nameSpan.innerHTML = "Franz";
+    var nameSpan = document.getElementById('name');
+    nameSpan.innerHTML = "Franz";
 }
 
 forceMe();
 ```
 
-### NPM Packet einbinden (einfachste Art)
-* Abhaengigkeit zu [NPM Packet](https://www.npmjs.com/package/random-lastname) herstellen ```npm install --save random-lastname```
-* In main.js verwenden:
+## Einbindung eines NPM Paktets (einfachste Art)
+
+* Abhängigkeit zu [NPM Paket](https://www.npmjs.com/package/random-lastname) herstellen `npm install random-lastname --save`
+* Verwendung des neuen Paketes in `main.js`:
+
 ```JavaScript
 var randomLastname = require("random-lastname");
 ```
+
 **:boom:ERROR:boom: :scream::scream::scream:**
-* :exclamation: Browser versteht kein AMD oder CommonJS ohne Hilfe
-* npm-run installieren um executables direkt zu starten ```npm install -g npm-run```
-* [browserify](http://browserify.org/) ```npm install browserify --save-dev```
-* [watchify](https://www.npmjs.com/package/watchify) fur Autoreload ```watchify main.js -o static/bundle.js```
+* Der Browser versteht die obige `require` Funktion nicht.
+* Es wird also eine Bibliothek benötigt, die diese Funktionalität liefert (Module Loader) oder es muss die Funktionalität bereits beim Kompilieren mitgeliefert werden (Module Bundler).
+* Wir verwenden einen einfachen Module Bundler: Browserify
+* [npm-run](https://www.npmjs.com/package/npm-run): Startet npm Executables direkt, ohne lästiges Referenzieren in den node_modules Ordner: `npm install -g npm-run`
+* [browserify](http://browserify.org/): Stattet obigen Code mit der notwendigen Funktionalität aus: `npm install browserify --save-dev`
+* [watchify](https://www.npmjs.com/package/watchify): Automatische Kompilierung mit Browserify nach jeder Änderungen: `npm install watchify -g` bzw. zum Starten `watchify main.js -o static/bundle.js`
 
-Da wir nun ein NPM Package verwenden muessen wir die Html sowie das Javascript erweitern:
+Da wir nun ein NPM Paket eingebunden haben, müssen wir die HTML-Datei sowie den Javascript-Code entsprechend anpassen:
 
 **index.html**
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    </head>
+    <head></head>
     <body>
-    <h1>May the force is with you</h1>
-    <span>Your are </span><span id='name'>???</span>
-<button onclick="forceMe()">Force me!!</button>
-    <script  src="bundle.js" type="text/javascript"></script>  
+        <h1>May the force be with you!</h1>
+        <span>You are </span>
+        <span id='name'>???</span>
+        <button onclick="forceMe()">Force me!!</button>
+        <script  src="bundle.js" type="text/javascript"></script>  
     </body>
 </html>
 ```
@@ -111,38 +120,48 @@ Da wir nun ein NPM Package verwenden muessen wir die Html sowie das Javascript e
 var randomLastname = require("random-lastname");
 
 function forceMe(){
-var nameSpan = document.getElementById('name');
-nameSpan.innerHTML = randomLastname() + " " +randomLastname();
+    var nameSpan = document.getElementById('name');
+    nameSpan.innerHTML = randomLastname() + " " + randomLastname();
 }
 
 forceMe();
+// Required to reference the function from the <button> tag after compilation with Browserify
 window.forceMe = forceMe;
 ```
 
+Mit diesen Änderungen funktioniert der Code wieder und wir haben unser erstes Paket eingebunden.
 
-##### Wichtige Befehle:
-* Packet installieren ```npm install <PACKAGE_NAME>```
-* Packet installieren und in package.json verweis ablegen ```npm install <PACKAGE_NAME> --save```
-* Packet für Entwicklungsumgebung installieren ```npm install <PACKAGE_NAME> --save-dev ```
-* Packet "global" installieren 
-```npm install <PACKAGE_NAME> --global```
-* Alle Packete für aktuelles Projekt installieren
-```npm update```
 
-### Semantic versioning (semver) <sup>[Image Sources](http://bytearcher.com/goodies/semantic-versioning-cheatsheet/)</sup>
+## Wichtige npm Befehle:
+
+* Neues Paket installieren: `npm install <PACKAGE_NAME>`
+* Neues Paket installieren und einen Verweis in `package.json` ablegen: `npm install <PACKAGE_NAME> --save`
+* Neues Paket für den Entwicklungsprozess installieren: `npm install <PACKAGE_NAME> --save-dev `
+* Paket "global" installieren: `npm install <PACKAGE_NAME> --global`
+* Alle Pakete für das aktuelle Projekt installieren (Informationen kommen aus `package.json`): `npm install`
+* Alle Pakete für das aktuelle Projekt updaten (Informationen kommen aus `package.json`): `npm update`
+
+
+## Semantic versioning (semver) <sup>[Image Sources](http://bytearcher.com/goodies/semantic-versioning-cheatsheet/)</sup>
+
 ![alt text](http://bytearcher.com/articles/semver-explained-why-theres-a-caret-in-my-package-json/promopics/1-table-semver-plain.png "Logo Title Text 1")
 ![alt text](http://bytearcher.com/goodies/semantic-versioning-cheatsheet/wheelbarrel-with-tilde-caret-white-bg-w1000.jpg "Logo Title Text 1")
 
 :bug: Lock down dependency versions :bug:
 
+
+
 # [3. JavaScript Modules]() :bug:todo:bug:
+
 > Use Modules to organize your JavaScript Codes
 ![Dependencies](assets/depencey_graph_for_demo.svg)
 
 
 ## 1. Generel 
+
 ### :rocket: Demo :rocket: ```git checkout Sample_02```
 Schreiben von Plain Old Javacsript Files:
+
 **calculator.js**
 ```javascript
 var calculator = function () {
