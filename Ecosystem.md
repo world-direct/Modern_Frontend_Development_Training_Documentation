@@ -324,7 +324,7 @@ define(['\logger'], function(logger){
 * index.html umschreiben
 
 - [x] Global Scope wird nicht mehr verwendet
-- [x] Dependencymanagement wird von RequiereJs übernommen!
+- [x] Dependencymanagement wird von RequireJs übernommen!
 - [x] Keine Namenskonflikte möglich!
 
 
@@ -339,7 +339,7 @@ zu `export` oder `module.export` bekannt gegeben.
 Abhängigkeiten können mit `require()` angegeben werden.
 #### CommonJS Syntax:
 ```javascript
-    var logger = requiere('logger.js');
+    var logger = require('logger.js');
 
     var flyToTheMoon = function(){
         logger.log('So Long, and Thanks for All the Fish');
