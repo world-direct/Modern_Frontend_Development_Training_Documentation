@@ -1,8 +1,13 @@
 Ökosystem für die moderne Frontend-Entwicklung
 ===
 > Dieser Vortrag soll zeigen wie ein modernes Ökosystem für Frontend Anwendungen aussehen kann.
-Node.js ist aus dem altag eines Frontend Entwicklers nicht wegzudenken. AMD und CommonJS kommen immer häufiger vor und
+Node.js ist aus dem Altag eines Frontend Entwicklers nicht mehr wegzudenken. AMD und CommonJS kommen immer häufiger vor und
 wie versteht eigentlich ein nicht ganz so moderner Broweser die neusten Sprachfeatueres von JavaScript?
+
+
+## Video Aufzeichnung ([Youtube](https://youtu.be/2dYhB8W_KYI))
+Die Aufzeichnung der Schulung ist auf Youtube nachzusehen:
+[![ScreenShot](images/youtubeImage01.png)](https://youtu.be/2dYhB8W_KYI)
 
 ## Vortragende
    
