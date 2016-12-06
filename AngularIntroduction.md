@@ -236,5 +236,95 @@ dass der Konstruktor der *Komponente* eine Abhängigkeit zum `HeroService` benö
 
 > Deklaratives Binden von Eigenschaften/Methoden einer *Komponenten*-Klasse zu Werten/Events im HTML.
 
-Situation ohne Data Binding:
-* Jede
+Ohne geeignetes Framework wäre der Entwickler verantwortlich, sich ändernde Datenwerte (z.B. nach einem Ajax-Request) im HTML upzudaten
+bzw. auf Benutzereingaben mit zu reagieren und entsprechende JS-Methoden aufzurufen. Jeder, der eine große Anwendung mit JQuery
+geschrieben hat, weiß um die Schwierigkeiten, den Code wartbar und übersichtlich geglieder zu halten.
+
+Angular hingegen unterstützt das Konzept von *Data Binding*, um Markup in einem HTML *Template* mit Eigenschaften und Methoden einer 
+*Komponenten*-Klasse zu synchronisieren. 
+
+Insgesamt existieren 4 verschiedene Syntax-Formen für *Data Binding*, wobei jede Form eine bestimmte Richtung hat:
+* Von der *Komponente* zum DOM: `{{value}}` bzw. `[property] = 'value'`
+* Vom DOM zur *Komponente*: `(event) = handler()`
+* Bidirektional: `[(ng-model)] = property`
+
+![Dependencies](assets/databinding.png)
+
+```JavaScript
+<li>{{hero.name}}</li>
+<hero-detail [hero]="selectedHero"></hero-detail>
+<li (click)="selectHero(hero)"></li>
+```
+
+* Die `{{hero.name}}` *Interpolation* zeigt den Wert der `hero.name` Eigenschaft innerhalb eines `<li>` Tags an.
+* Das `[hero]` *Property Binding* übergibt den Wert der `selectedHero` Eigenschaft der `HeroListComponent` der
+`hero` Eigenschaft von der Kind-*Komponente* `HeroDetailComponent`.
+* Das `(click)` *Event Binding* ruft die `selectHero` Methode auf, sobald der Benutzer auf den Namen klickt.
+
+*Two-way Data Binding* ist eine wichtige vierte Form, die *Property* und *Event Binding* unter der Verwendung der
+vordefinierten `ngModel` Direktive in einer einzigen Notation miteinerander verknüpft.
+
+```JavaScript
+<input [(ngModel)]="hero.name">
+```
+
+In obigem `Two-way Data Binding` Beispiel wird der Wert `hero.name` Eigenschaft mit dem angezeigten Wert in der
+Textbox bidirektional synchronsiert, sodass 
+* Änderungen der Eigenschaften den angezeigten Wert in der Textbox mitändern und
+* Benutzereingaben in die Textbox denselben Wert der Eigenschaft zuweisen.
+
+`Data Binding` spielt eine wichtige Rolle in der Kommunikation zwischen einer `Komponente` und dem zugehörigen `Template`
+bzw. zwischen Eltern und Kind *Komponenten*.
+
+![Dependencies](assets/component-databinding.png)
+![Dependencies](assets/parent-child-binding.png)
+
+
+## Direktiven
+
+> Angular *Templates* sind dynamische Konstrukte - wenn Angular eine *Template* rendert, wird das DOM entsprechend den Regeln 
+der innewohnenden *Direktiven* transformiert.
+
+Eine *Direktive* ist eine Klasse mit dem `@Directive` Dekorator als *Metadaten*. Dabei werden grob 3 Formen von Direktiven 
+unterschieden: *Template-Direktiven*, *Strukturelle Direktiven* und *Attribut-Direktiven*.
+
+### Template-Direktiven
+
+Technisch gesehen sind die bereits bekannten *Templates* lediglich Vetreter dieser speziellen *Direktiven*-Form.
+Allerdings sind *Komponenten* so zentrale Bestandteile in Angular, dass es einen eigenen Dekorator gibt. 
+
+### Strukturelle Direktiven
+
+*Strukturelle Direktiven* ändern das Layout indem sie Elemente zum DOM hinzufügen, ersetzen oder entfernen. Sie ändern sozusagen
+die DOM Struktur.
+
+```JavaScript
+<li *ngFor="let hero of heroes"></li>
+<hero-detail *ngIf="selectedHero"></hero-detail>
+```
+
+* `*ngFor` fungiert wie eine for-in Schleife: Die *Direktive* erzeugt für jeden Held in der `heroes` Liste ein neues `<li>` Element.
+* `*ngIf` fungiert wie ein if Statement: Die `<hero-detail>` *Komponente* wird nur dann gerendert, wenn ein Held ausgewählt wurde
+(d.h. wenn `selectedHero` nicht `null` und nicht `undefinded` ist).  
+* `ngSwitch` fungiert wie ein switch Statement: Es wird nur jener Teil gerendert, auf den die switch-Bedingung zutrifft.
+
+### Attribut-Direktiven 
+
+*Attribut-Direktiven* ändern die Erscheinungsform bzw. das Verhalten von existierenden Elementen. In einem *Template* sehen sie wie 
+gewöhnliche HTML Attribute aus - deshalb der Name.
+
+```JavaScript
+<input [(ngModel)]="hero.name">
+```
+
+* `ngModel` ist ein Beispiel für eine *Attribut-Directive* und implementiert ein *Two-way Data Binding*. Es ändert das Verhalten eines
+existierenden Elements (für gewöhnlich eines `<input>` Elements), indem es den angezeigten Wert ändert, sobald sich der zugewiesene
+Eigenschaftswert ändert.
+* Weitere Beispiele: `ngStyle` und `ngClass` zum Ändern der Erscheinungsform von HTML Elementen.
+
+
+## Services
+
+> Als *Service* bezeichnet man in Angular weitreichend jeden Wert, jede Funktion oder jedes Feature, den die Anwendung benötigt. Insbesondere
+werden *Services* für die Implementierung der innewohnenden Geschäftslogik verwendet.
+
