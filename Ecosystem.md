@@ -6,7 +6,7 @@ wie versteht eigentlich ein nicht ganz so moderner Broweser die neusten Sprachfe
 
 ## Vortragende
    
- **[Christian Schaiter](mailto:user@example.com) und [Mathias Feitzinger](mailto:mfe@world-direct.at)**
+ **[Christian Schaiter](mailto:christian.schaiter@world-direct.at) und [Mathias Feitzinger](mailto:mfe@world-direct.at)**
 
 
 ## Agenda
