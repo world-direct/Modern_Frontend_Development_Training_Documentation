@@ -211,12 +211,30 @@ Dies wird mit dem `@Component` Dekorator realisiert.
 
 ```JavaScript
 @Component({
-    moduleId: module.id,
     selector:    'hero-list',
     templateUrl: 'hero-list.component.html',
-    providers:  [ HeroService ]
+    providers:   [ HeroService ]
 })
 export class HeroListComponent implements OnInit {
     /* . . . */
 }
 ```
+
+Der `@component` Dekorator erhält ein Konfigurationsobjekt mit folgenden Eigenschaften:
+* `selector`: Der CSS-Selektor zum Einbetten der *Komponente* in eine *View*. Wenn z.B. Angular eine Eltern-*View* parsed und
+das HTML enthält `<hero-list></hero-list>`, dann wird eine neue Instanz der `HeroListComponent` *Komponente* erstellt und 
+die zugehörige *View* zwischen den beiden Tags eingefügt.  
+* `templateUrl`: Die URL des zugehörigen HTML *Templates*, relativ zum aktuellen *Modul*. Best Practice: Jedes *Modul* befindet sich
+in einem eigenen Ordner, mit Unterordnern für alle zugehörigen *Komponenten* und *Templates*.
+* `providers`: Ein Array aus *Dependency Injection Providern* für alle Services, die von dieser *Komponente* benötigt werden. Somit weiß Angular,
+dass der Konstruktor der *Komponente* eine Abhängigkeit zum `HeroService` benötigt.
+
+**Merke: _Templates_, _Metadaten_ und _Komponenten_ definieren gemeinsam eine _View_.**
+
+
+## Data Binding
+
+> Deklaratives Binden von Eigenschaften/Methoden einer *Komponenten*-Klasse zu Werten/Events im HTML.
+
+Situation ohne Data Binding:
+* Jede
