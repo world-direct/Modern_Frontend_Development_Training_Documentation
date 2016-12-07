@@ -28,7 +28,7 @@ Zu Beginn sehen wir uns ein einfaches fertiges Beispiel an.
 * In ein leeres Verzeichnis wechseln
 * ```git clone https://github.com/angular/quickstart.git quickstart```
 * ```npm install```
-* ```npm run```
+* ```npm start```
 
 :open_mouth: :heart_eyes_cat: :fireworks: :fireworks: :fireworks: :fireworks:
 
@@ -44,7 +44,7 @@ Dieses ist in diesem [Github Repository](https://github.com/world-direct/Modern_
 mittels 
 `git checkout Sample_Angular_01`
 zu finden.
-Dieses ist wieder mit `npm install` und `npm run` zu starten.
+Dieses ist wieder mit `npm install` und `npm start` zu starten.
 
 Das Beispiel ```Sample_Angular_01``` enthält nun:
 * Bundeling mit WebPack
@@ -416,5 +416,4 @@ Code schreiben. Allerdings hilft Angular, diese Prinzipien einzuhalten, indem es
 
 
 ## Dependency Injection
-
-> 
+folgt....
