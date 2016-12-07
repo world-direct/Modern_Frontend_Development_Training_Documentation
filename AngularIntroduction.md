@@ -276,8 +276,7 @@ Textbox bidirektional synchronsiert, sodass
 `Data Binding` spielt eine wichtige Rolle in der Kommunikation zwischen einer `Komponente` und dem zugehörigen `Template`
 bzw. zwischen Eltern und Kind *Komponenten*.
 
-![Dependencies](assets/component-databinding.png)
-![Dependencies](assets/parent-child-binding.png)
+![Dependencies](assets/component-databinding.png) ![Dependencies](assets/parent-child-binding.png)
 
 
 ## Direktiven
@@ -328,3 +327,63 @@ Eigenschaftswert ändert.
 > Als *Service* bezeichnet man in Angular weitreichend jeden Wert, jede Funktion oder jedes Feature, den die Anwendung benötigt. Insbesondere
 werden *Services* für die Implementierung der innewohnenden Geschäftslogik verwendet.
 
+Im Allgemeinen ist ein *Service* eine Klasse mit einer bestimmten Aufgabe (Single-Responsibility Prinzip), wie z.B.
+* Logging Service
+* RestRequest Service
+* Message Bus
+* Application Configuration Service
+
+Angular kennt im Prinzip keine Definition von *Services* - es gibt weder eine Basisklasse noch einen speziellen Dekorator. Trotzdem sind sie ein
+zentraler Bestandteil jeder Angular Applikation, insbesondere für die Verwending innerhalb von *Komponenten*.
+
+Beispiel: `LoggerService`
+```JavaScript
+export class LoggerService {
+
+    public log(msg: any)   { 
+        console.log(msg); 
+    }
+    
+    public error(msg: any) { 
+        console.error(msg); 
+    }
+
+    public warn(msg: any)  { 
+        console.warn(msg); 
+    }
+}
+```
+
+Ein weiteres Beispiel ist das folgende `HeroService`, welches wiederum das obige `LoggerService` und
+ein `BackendService` für die Kommunikation mit dem Server verwendet.
+
+```JavaScript
+export class HeroService {
+    
+    private heroes: Hero[] = [];
+
+    constructor(private backend: BackendService, private logger: LoggerService) { }
+
+    getHeroes() {
+        this.backend.getAll(Hero).then( (heroes: Hero[]) => {
+            this.logger.log(`Fetched ${heroes.length} heroes.`);
+            this.heroes.push(heroes); // fill cache
+        });
+    
+        return this.heroes;
+    }
+}
+```
+
+*Komponenten* Klassen sollten so einfach wie möglich sein: Sie sollten keine Daten direkt vom Server laden, keine Eingaben validieren oder direkt die Konsole loggen.
+Diese Aufgaben werden an *Services* weiterdelegiert. Somit kann sich eine *Komponente* auf ihre zentrale Aufgabe konzentrieren: Die Bereitstellung von Eigenschaften und
+Methoden für *Data Binding* mit dem *Template*.
+
+**Achtung:**: Angular selbst forciert das Single-Responsibility Prinzip von *Komponenten* und *Services* nicht, d.h. man könnte auch ein Service mit 5000 Zeilen
+Code schreiben. Allerdings hilft Angular, diese Prinzipien einzuhalten, indem es sehr einfach ist, Applikationslogik in Services auszulagern und diese dann per
+*Dependency Injection* den nötigen *Komponenten* zur Verfügung zu stellen.
+
+
+## Dependency Injection
+
+> 
