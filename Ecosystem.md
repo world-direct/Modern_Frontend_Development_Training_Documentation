@@ -11,7 +11,7 @@ Die Aufzeichnung der Schulung ist auf Youtube nachzusehen:
 
 ## Vortragende
    
- **[Christian Schaiter](mailto:user@example.com) und [Mathias Feitzinger](mailto:mfe@world-direct.at)**
+ **[Christian Schaiter](mailto:christian.schaiter@world-direct.at) und [Mathias Feitzinger](mailto:mfe@world-direct.at)**
 
 
 ## Agenda

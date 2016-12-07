@@ -11,7 +11,7 @@ Der Sourcecode für die gezeigten Beispiele ist in [diesem Github Repository](ht
 * Unterschiede zwischen AMD und CommonJS
 * SystemJS vs. Webpack: State-of-the-Art Module-Loaders 
 
-## Teil 2 Angular 2 Einstieg [Folgt]()
+## Teil 2 [Einstieg in Angular 2](AngularIntroduction.md)
 * Was genau ist Angular 2 und wofür wird es verwendet
 * Grobe Architektur von Angular 2
 * Deklarative Programmierung mit Bindings
