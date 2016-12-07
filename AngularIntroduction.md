@@ -9,6 +9,7 @@ ist dabei Voraussetzung für die Entwicklung von komponentenbasierten (Web-)Anwe
  **[Christian Schaiter](mailto:christian.schaiter@world-direct.at) und [Mathias Feitzinger](mailto:mfe@world-direct.at)**
 
 ## Agenda
+1. Angular Einstieg
 1. Was ist Angular?
 1. Architektur Übersicht
     * Module
@@ -19,11 +20,40 @@ ist dabei Voraussetzung für die Entwicklung von komponentenbasierten (Web-)Anwe
     * Direktiven
     * Services
     * Dependency Injection
-1. Start der Beispielapplikation
+
+
+# Angular Einstieg 
+Zu Beginn sehen wir uns ein einfaches fertiges Beispiel an.
+## Beispiel von [Angulor.io](www.angular.io)
+* In ein leeres Verzeichnis wechseln
+* ```git clone https://github.com/angular/quickstart.git quickstart```
+* ```npm install```
+* ```npm run```
+
+:open_mouth: :heart_eyes_cat: :fireworks: :fireworks: :fireworks: :fireworks:
+
+#### Dieses Beispiel von [Angulor.io](www.angular.io) unterstützt:
+* Unit Test für Komponenten
+* End-to-end Tests
+* Automatische Tests über [Travis](https://travis-ci.org/)
+* Live Reload
+
+### :rocket: Demo :rocket:
+Um den Einstieg in Angular2 zu vereinfachen, haben wir das Sample Beispiel angepasst. 
+Dieses ist in diesem [Github Repository](https://github.com/world-direct/Modern_Frontend_Development_Sources)
+mittels 
+`git checkout Sample_Angular_01`
+zu finden.
+Dieses ist wieder mit `npm install` und `npm run` zu starten.
+
+Das Beispiel ```Sample_Angular_01``` enthält nun:
+* Bundeling mit WebPack
+* Live Reload mit WebPack
+* Less Templates
+* Ein `Modul`, eine `Componente` und ein `Service`
 
 
 # [Was ist Angular](https://angular.io/)?
-
 > Kennenlernen des populärsten (laut Google Trends) Web-Frameworks.
 
 Speziell in der JS-Welt dreht sich die Erdkugel in den letzten Jahren sehr schnell. Für ein Unternehmen ist es deshalb wichtig, richtige und 
@@ -62,6 +92,7 @@ All diese Eigenschaften sollten bei der Auswahl eines Frameworks mitberücksicht
 ## Architektur von Angular
 
 Angular ist ein Framework für die Erstellung von Client-Applikationen in HTML und JavaScript (bzw. einer Sprache wie TypeScript, die zu JavaScript kompiliert wird).
+
 
 Das Framework selbst ist modular aufgebaut:
 * Kernbiblioteheken (werden immer benötigt)
