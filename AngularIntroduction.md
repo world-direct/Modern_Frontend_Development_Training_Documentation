@@ -4,6 +4,10 @@ Einstieg in Angular 2
 Frontend-Framework von Google. Ein gutes Verständnis der Architektur und der integrierten Bausteine 
 ist dabei Voraussetzung für die Entwicklung von komponentenbasierten (Web-)Anwendungen mit Angular 2.
 
+## Video Aufzeichnung ([Youtube](https://youtu.be/JznzzjMBsys))
+Die Aufzeichnung der Schulung ist auf Youtube nachzusehen:
+[![ScreenShot](images/youtubeImage01.png)](https://youtu.be/JznzzjMBsys)
+
 ## Vortragende
    
  **[Christian Schaiter](mailto:christian.schaiter@world-direct.at) und [Mathias Feitzinger](mailto:mfe@world-direct.at)**
