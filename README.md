@@ -15,6 +15,8 @@ Der Sourcecode für die gezeigten Beispiele ist in [diesem Github Repository](ht
 * Was genau ist Angular 2 und wofür wird es verwendet
 * Grobe Architektur von Angular 2
 * Deklarative Programmierung mit Bindings
+* [Exemplarisches Beispiel](AngularPracticeExample.md)
+
 
 ## Teil 3 Angular 2 Core Features [Folgt]()
 * Formulare und Formularvalidierung
