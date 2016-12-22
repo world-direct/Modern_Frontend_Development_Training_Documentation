@@ -20,6 +20,6 @@ Der Sourcecode für die gezeigten Beispiele ist in [diesem Github Repository](ht
 
 ## Teil 3 Angular2 Praxis Beispiel
 * Praxis Beispiel mit Angular2
-* Beispiel anhand des theoretischen Wissens aus Teil1 und Teil2
+* Beispiel anhand des theoretischen Wissens aus [Teil1](cosystem.md) und [Teil2](AngularIntroduction.md)
 Die Aufzeichnung der Schulung ist auf Youtube nachzusehen:
 [![ScreenShot](images/youtubeImage03.png)](https://youtu.be/G4_FIxfoA_c)
