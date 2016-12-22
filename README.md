@@ -18,8 +18,8 @@ Der Sourcecode für die gezeigten Beispiele ist in [diesem Github Repository](ht
 * [Exemplarisches Beispiel](AngularPracticeExample.md)
 
 
-## Teil 3 Angular 2 Core Features [Folgt]()
-* Formulare und Formularvalidierung
-* Eigene Direktiven
-* Erfahrungen mit Angular
-* Offene Diskussion
+## Teil 3 Angular2 Praxis Beispiel
+* Praxis Beispiel mit Angular2
+* Beispiel anhand des theoretischen Wissens aus Teil1 und Teil2
+Die Aufzeichnung der Schulung ist auf Youtube nachzusehen:
+[![ScreenShot](images/youtubeImage03.png)](https://youtu.be/G4_FIxfoA_c)
